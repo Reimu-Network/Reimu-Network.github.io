@@ -1,0 +1,152 @@
+@font-face{
+    font-family: "Minecraft-Seven";
+    src: url(/assets/fonts/woff2/Minecraft-Seven_v2.woff2) format("woff2");
+}
+@font-face{
+    font-family: "GNU-Unifont";
+    src: url(/assets/fonts/otf/unifont_jp-17.0.01.otf) format("opentype");
+}
+:root{
+    --c0: #000000;
+    --bc0: #000000;
+    --c1: #0000aa;
+    --bc1: #00002a;
+    --c2: #00aa00;
+    --bc2: #002a00;
+    --c3: #00aaaa;
+    --bc3: #002a2a;
+    --c4: #aa0000;
+    --bc4: #2a0000;
+    --c5: #aa00aa;
+    --bc5: #2a002a;
+    --c6: #ffaa00;
+    --bc6: #2a2a00;
+    --c7: #aaaaaa;
+    --bc7: #2a2a2a;
+    --c8: #555555;
+    --bc8: #151515;
+    --c9: #5555ff;
+    --bc9: #15153f;
+    --ca: #55ff55;
+    --bca: #153f15;
+    --cb: #55ffff;
+    --bcb: #153f3f;
+    --cc: #ff5555;
+    --bcc: #3f1515;
+    --cd: #ff55ff;
+    --bcd: #3f153f;
+    --ce: #ffff55;
+    --bce: #3f3f15;
+    --cf: #ffffff;
+    --bcf: #3f3f3f;
+    --box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 1.5vh;
+}
+a{
+    font-family: "Minecraft-Seven";
+    color: var(--c4);
+    text-shadow: 0.1em 0.1em 0 var(--bc4);
+    text-decoration: none;
+    text-decoration-thickness: 0.1em;
+}
+button{
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    transition: 0.1s;
+    width: 3rem;
+    height: 3rem;
+}
+button:hover{
+    background-color: gainsboro;
+    transition: 0.1s;
+}
+button:active{
+    background-color: lightgray;
+    transition: 0.1s;
+}
+a:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+}
+.Seven{
+    font-family: "Minecraft-Seven";
+}
+.header{
+    box-shadow: var(--box-shadow);
+    height: 4rem;
+}
+.header nav{
+    height: 4rem;
+}
+.header nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+}
+.header nav ul li{
+    display: flex;
+    align-items: center;
+    float: left;
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.dropdown-check{
+    display: none;
+    z-index: 99999;
+}
+.dropdown-label{
+    position: relative;
+    left: 0;
+    display: inline-block;
+    background-color: white;
+    padding: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+.dropdown-label::after{
+    font-size: 2rem;
+    content: "menu";
+}
+.dropdown-label:hover{
+    background-color: whitesmoke;
+}
+.dropdown-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-12rem);
+    opacity: 0;
+    transition: 0.2s;
+    background: white;
+    width: 12rem;
+    pointer-events: none;
+    height: 100vh !important;
+    padding: 0;
+}
+.dropdown-check:checked + .dropdown-label + .dropdown-list {
+    opacity: 1;
+    transform: translateX(-0.5rem);
+    box-shadow: var(--box-shadow);
+    pointer-events: auto;
+}
+.dropdown-check:checked + .dropdown-label{
+    position: relative;
+    left: 12rem;
+    box-shadow: var(--box-shadow);
+    transition: 0.2s;
+}
+.dropdown-check:checked + .dropdown-label::after{
+    content: "close";
+}
