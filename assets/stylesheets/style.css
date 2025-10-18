@@ -49,10 +49,14 @@ html, body{
 }
 a{
     font-family: "Minecraft-Seven";
-    color: var(--c4);
-    text-shadow: 0.1em 0.1em 0 var(--bc4);
+    color: var(--cc);
+    text-shadow: 0.1em 0.1em 0 var(--bcc);
     text-decoration: none;
     text-decoration-thickness: 0.1em;
+}
+a:visited{
+    color: var(--c4);
+    text-shadow: 0.1em 0.1em 0 var(--bc4);
 }
 button{
     background-color: white;
@@ -78,8 +82,10 @@ a:hover{
     font-family: "Minecraft-Seven";
 }
 .header{
+    position: fixed;
     box-shadow: var(--box-shadow);
     height: 4rem;
+    width: 100%;
 }
 .header nav{
     height: 4rem;
@@ -99,6 +105,9 @@ a:hover{
     font-size: 2rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+}
+.header nav ul li a, .header nav ul li a img{
+    max-height: 3rem;
 }
 .dropdown-check{
     display: none;
@@ -134,6 +143,14 @@ a:hover{
     pointer-events: none;
     height: 100vh !important;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content:flex-start;
+}
+.dropdown-list li{
+    height: 4rem;
+    width: 12rem !important;
+    padding-left: 1rem;
 }
 .dropdown-check:checked + .dropdown-label + .dropdown-list {
     opacity: 1;
@@ -149,4 +166,17 @@ a:hover{
 }
 .dropdown-check:checked + .dropdown-label::after{
     content: "close";
+}
+.fullscreen-section{
+    height: 100vh;
+    width: 100vw;
+}
+.welcome-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcome-page img{
+    max-width: 90vh;
+    width: 50vw;
 }
