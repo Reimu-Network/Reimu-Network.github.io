@@ -1,10 +1,12 @@
-@font-face{
-    font-family: "Minecraft-Seven";
-    src: url(/assets/fonts/woff2/Minecraft-Seven_v2.woff2) format("woff2");
+@font-face {
+    font-family: "Minecraft";
+    src: url(/assets/fonts/woff2/Minecraft-Seven_v2.woff2) format(woff2),
+         url(/assets/fonts/woff/Minecraft-Seven_v2.woff) format(woff);
 }
-@font-face{
-    font-family: "GNU-Unifont";
-    src: url(/assets/fonts/otf/unifont_jp-17.0.01.otf) format("opentype");
+@font-face {
+    font-family: "Unifont";
+    src: url(/assets/fonts/woff2/unifont-17.0.01.woff2) format(woff2),
+         url(/assets/fonts/woff/unifont-17.0.01.woff) format(woff);
 }
 :root{
     --c0: #000000;
@@ -39,144 +41,52 @@
     --bce: #3f3f15;
     --cf: #ffffff;
     --bcf: #3f3f3f;
-    --box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
 }
 html, body{
-    width: 100%;
-    height: 100%;
     margin: 0;
-    font-size: 1.5vh;
-}
-a{
-    font-family: "Minecraft-Seven";
-    color: var(--cc);
-    text-shadow: 0.1em 0.1em 0 var(--bcc);
-    text-decoration: none;
-    text-decoration-thickness: 0.1em;
-}
-a:visited{
-    color: var(--c4);
-    text-shadow: 0.1em 0.1em 0 var(--bc4);
-}
-button{
-    background-color: white;
-    border: none;
-    border-radius: 50%;
-    transition: 0.1s;
-    width: 3rem;
-    height: 3rem;
-}
-button:hover{
-    background-color: gainsboro;
-    transition: 0.1s;
-}
-button:active{
-    background-color: lightgray;
-    transition: 0.1s;
-}
-a:hover{
-    text-decoration: underline;
-    text-decoration-thickness: 0.1em;
-}
-.Seven{
-    font-family: "Minecraft-Seven";
+    padding: 0;
 }
 .header{
-    position: fixed;
-    box-shadow: var(--box-shadow);
-    height: 4rem;
     width: 100%;
+    text-align: center;
 }
 .header nav{
     height: 4rem;
+    display: flex;
 }
 .header nav ul{
     margin: 0;
     padding: 0;
-    list-style: none;
-    height: 4rem;
-    display: flex;
-    align-items: center;
 }
 .header nav ul li{
-    display: flex;
-    align-items: center;
+    margin: 0;
+    list-style: none;
     float: left;
-    font-size: 2rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    font-family: "Minecraft", "Unifont", sans-serif !important;
 }
-.header nav ul li a, .header nav ul li a img{
-    max-height: 3rem;
-}
-.dropdown-check{
-    display: none;
-    z-index: 99999;
-}
-.dropdown-label{
-    position: relative;
-    left: 0;
-    display: inline-block;
-    background-color: white;
-    padding: 0.5rem;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    transition: 0.2s;
-}
-.dropdown-label::after{
-    font-size: 2rem;
-    content: "menu";
-}
-.dropdown-label:hover{
-    background-color: whitesmoke;
-}
-.dropdown-list {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-12rem);
-    opacity: 0;
-    transition: 0.2s;
-    background: white;
+.header nav ul li a{
     width: 12rem;
-    pointer-events: none;
-    height: 100vh !important;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-content:flex-start;
-}
-.dropdown-list li{
     height: 4rem;
-    width: 12rem !important;
-    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    transition: 0.2s;
+    color: var(--cc);
+    text-shadow: 0.1rem 0.1rem 0 var(--bcc);
 }
-.dropdown-check:checked + .dropdown-label + .dropdown-list {
-    opacity: 1;
-    transform: translateX(-0.5rem);
-    box-shadow: var(--box-shadow);
-    pointer-events: auto;
-}
-.dropdown-check:checked + .dropdown-label{
-    position: relative;
-    left: 12rem;
-    box-shadow: var(--box-shadow);
+.header nav ul li a:hover{
+    background-color: whitesmoke;
     transition: 0.2s;
 }
-.dropdown-check:checked + .dropdown-label::after{
-    content: "close";
+.logo{
+    width: 50%;
+    max-width: 50vh;
 }
-.fullscreen-section{
-    height: 100vh;
-    width: 100vw;
+.link_logo a{
+    width: 4rem !important;
 }
-.welcome-page{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.welcome-page img{
-    max-width: 90vh;
-    width: 50vw;
+@media screen and (max-width:56rem) {
+    .header nav ul{
+        display: none !important;
+    }
 }
