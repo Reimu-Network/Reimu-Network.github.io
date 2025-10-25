@@ -5,46 +5,59 @@
 }
 @font-face {
     font-family: "Unifont";
-    src: url(/assets/fonts/woff2/unifont-17.0.01.woff2) format(woff2),
-         url(/assets/fonts/woff/unifont-17.0.01.woff) format(woff);
+    src: url(/assets/fonts/woff2/unifont_jp-17.0.01.woff2) format(woff2),
+         url(/assets/fonts/woff/unifont_jp-17.0.01.woff) format(woff);
 }
 :root{
-    --c0: #000000;
-    --bc0: #000000;
-    --c1: #0000aa;
-    --bc1: #00002a;
-    --c2: #00aa00;
-    --bc2: #002a00;
-    --c3: #00aaaa;
-    --bc3: #002a2a;
-    --c4: #aa0000;
-    --bc4: #2a0000;
-    --c5: #aa00aa;
-    --bc5: #2a002a;
-    --c6: #ffaa00;
-    --bc6: #2a2a00;
-    --c7: #aaaaaa;
-    --bc7: #2a2a2a;
-    --c8: #555555;
-    --bc8: #151515;
-    --c9: #5555ff;
-    --bc9: #15153f;
-    --ca: #55ff55;
-    --bca: #153f15;
-    --cb: #55ffff;
-    --bcb: #153f3f;
-    --cc: #ff5555;
-    --bcc: #3f1515;
-    --cd: #ff55ff;
-    --bcd: #3f153f;
-    --ce: #ffff55;
-    --bce: #3f3f15;
-    --cf: #ffffff;
-    --bcf: #3f3f3f;
+    --color-0: #000000;
+    --background-color-0: #000000;
+    --color-1: #0000aa;
+    --background-color-1: #00002a;
+    --color-2: #00aa00;
+    --background-color-2: #002a00;
+    --color-3: #00aaaa;
+    --background-color-3: #002a2a;
+    --color-4: #aa0000;
+    --background-color-4: #2a0000;
+    --color-5: #aa00aa;
+    --background-color-5: #2a002a;
+    --color-6: #ffaa00;
+    --background-color-6: #2a2a00;
+    --color-7: #aaaaaa;
+    --background-color-7: #2a2a2a;
+    --color-8: #555555;
+    --background-color-8: #151515;
+    --color-9: #5555ff;
+    --background-color-9: #15153f;
+    --color-a: #55ff55;
+    --background-color-a: #153f15;
+    --color-b: #55ffff;
+    --background-color-b: #153f3f;
+    --color-c: #ff5555;
+    --background-color-c: #3f1515;
+    --color-d: #ff55ff;
+    --background-color-d: #3f153f;
+    --color-e: #ffff55;
+    --background-color-e: #3f3f15;
+    --color-f: #ffffff;
+    --background-color-f: #3f3f3f;
+    font-size: 3vw;
+    --shadow-offset: 0.1em;
 }
 html, body{
     margin: 0;
     padding: 0;
+    font-family: "Minecraft", "Unifont", sans-serif;
+}
+:lang(ja),
+:lang(zh),
+:lang(ko),
+:lang(th),
+:lang(hi),
+:lang(ar),
+:lang(he) {
+  font-family: "Unifont", sans-serif;
+  --shadow-offset: 0.0625em;
 }
 .header{
     width: 100%;
@@ -61,8 +74,19 @@ html, body{
 .header nav ul li{
     margin: 0;
     list-style: none;
-    float: left;
     font-family: "Minecraft", "Unifont", sans-serif !important;
+}
+.nav_horiz li{
+    float: left;
+}
+.nav_vert{
+    position: absolute;
+    left: -12rem;
+    width: 12rem;
+    height: 100vh;
+    transition: 0.2s;
+    z-index: 10000;
+    background-color: white;
 }
 .header nav ul li a{
     width: 12rem;
@@ -71,22 +95,108 @@ html, body{
     align-items: center;
     justify-content:center;
     transition: 0.2s;
-    color: var(--cc);
-    text-shadow: 0.1rem 0.1rem 0 var(--bcc);
+    color: var(--color-c);
+    text-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--background-color-c);
+    text-decoration-thickness: var(--shadow-offset);
 }
 .header nav ul li a:hover{
     background-color: whitesmoke;
     transition: 0.2s;
 }
+.header nav ul li a:active{
+    background-color: gainsboro;
+    transition: 0.2s;
+}
+.header nav ul li a img{
+    user-select: none;
+    pointer-events: none;
+}
 .logo{
     width: 50%;
     max-width: 50vh;
+    user-select: none;
+    pointer-events: none;
 }
 .link_logo a{
-    width: 4rem !important;
+    width: 3rem !important;
+    height: 3rem !important;
+    margin: 0.5rem !important;
+    border-radius: 50%;
 }
-@media screen and (max-width:56rem) {
-    .header nav ul{
+#sidemenu-check{
+    display: none;
+}
+.sidemenu-btn{
+    display: block;
+    font-size: 2rem;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    visibility: hidden;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-c);
+    text-shadow: 0.075em 0.075em 0 var(--background-color-c);
+    transition: 0.2s;
+    user-select: none;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 0.2s;
+    pointer-events: none;
+}
+.sidemenu-btn::after{
+    content: "menu";
+    font-family: 'Material Symbols Outlined';
+    color: var(--color-c);
+    text-shadow: 0.075em 0.075em 0 var(--background-color-c);
+    width: 3rem;
+    height: 3rem;
+    margin: 0.5rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: all;
+}
+.sidemenu-btn:hover::after{
+    background-color: whitesmoke;
+    transition: 0.2s;
+}
+.sidemenu-btn:active::after{
+    background-color: gainsboro;
+    transition: 0.2s;
+}
+#sidemenu-check:checked + .sidemenu-btn::after{
+    content: "close";
+    color: var(--color-c);
+    text-shadow: 0.05em 0.05em 0 var(--background-color-c) !important;
+    left: 12rem;
+}
+#sidemenu-check:checked + .sidemenu-btn{
+    position: absolute;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.2s;
+    pointer-events: all;
+}
+#sidemenu-check:checked ~ .nav_vert{
+    left: 0;
+    transition: 0.2s;
+}
+@media screen and (max-width: 56rem){
+    .header nav .nav_horiz{
         display: none !important;
+    }
+    .sidemenu-btn::after{
+        display: flex;
     }
 }
